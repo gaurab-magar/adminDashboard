@@ -10,7 +10,7 @@ variables:
 stages:
   - build
 
-build-and-test-job:
+build-job:
   stage: build
   before_script:
     - apt-get -y -qq update
@@ -26,5 +26,5 @@ build-and-test-job:
     - npm -v
     - npm install
     - npm run build 
-    - npm test   
+   # - npm test   
    

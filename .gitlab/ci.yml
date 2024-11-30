@@ -1,0 +1,20 @@
+stages:
+  - build
+  - test
+
+workflow:
+   rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+build-job:
+  stage: build
+  script:
+    - npm install
+    - npm run build
+
+test-job:
+  stage: test
+  script:
+    - npm test    

@@ -15,8 +15,10 @@ stages:
 
 prepare-job:
   stage: setup
+   before_script:
+    - apt-get -y -qq update
+    - apt-get install -y coreutils
   script:  
-    - microdnf install -y curl bash
     - mkdir -p $NVM_DIR
     - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
     - export NVM_DIR=“$HOME/.nvm”

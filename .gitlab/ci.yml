@@ -5,7 +5,7 @@ workflow:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
 
 variables:
-  NVM_DIR: "/home/.nvm"
+  NVM_DIR: "/home/install/.nvm"
   NODE_VERSION: 21.7.3 
 
 stages:
@@ -21,7 +21,7 @@ prepare-job:
   script:  
     - mkdir -p $NVM_DIR
     - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-    - export NVM_DIR="/home/.nvm"
+    - export NVM_DIR=$NVM_DIR
     - if [ -s "$NVM_DIR/nvm.sh" ]; then ."$NVM_DIR/nvm.sh"; fi
     - nvm ls-remote
     - nvm install $NODE_VERSION
@@ -32,11 +32,13 @@ prepare-job:
 
 build-job:
   stage: build
+  needs: [setup]
   script:
     - npm install
     - npm run build
 
 test-job:
   stage: test
+  needs: [setup]
   script:
     - npm test    

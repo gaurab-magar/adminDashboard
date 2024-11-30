@@ -36,6 +36,7 @@ build-job:
   stage: build
   needs: [prepare-job]
   script:
+    - source ~/.nvm/nvm.sh
     - npm install
     - npm run build
 
@@ -43,4 +44,5 @@ test-job:
   stage: test
   needs: [prepare-job]
   script:
+    - source ~/.nvm/nvm.sh
     - npm test    

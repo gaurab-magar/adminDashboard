@@ -32,13 +32,13 @@ prepare-job:
 
 build-job:
   stage: build
-  needs: [setup]
+  needs: [prepare-job]
   script:
     - npm install
     - npm run build
 
 test-job:
   stage: test
-  needs: [setup]
+  needs: [prepare-job]
   script:
     - npm test    

@@ -7,8 +7,8 @@ import { MdOutlineCancel } from "react-icons/md";
 
 
 
-const linkClassesActive = 'flex items-center gap-2 font-light px-3 py-2 hover:bg-neutral-700 hover:no-underline active:bg-neutral-600 rounded-sm font-bold text-white hover:text-white transition-all ease-in-out'
-const linkClasses = 'flex items-center gap-2 font-light px-3 py-2 hover:bg-neutral-700 hover:no-underline active:bg-neutral-600 rounded-sm text-base text-gray-300 hover:text-gray-300'
+const linkClassesActive = 'flex items-center gap-2 px-3 py-2 hover:bg-neutral-700 hover:no-underline active:bg-neutral-600 rounded-sm font-bold text-white hover:text-white duration-400 transition-all ease-in-out'
+const linkClasses = 'flex items-center gap-2 font-light px-3 py-2 hover:bg-neutral-700 hover:no-underline active:bg-neutral-600 rounded-sm text-base text-gray-400 hover:text-gray-300'
 const Sidebar = ({isOpen , toggleSidebar}) => {
   return (
     // <div className='flex flex-col bg-neutral-900 w-64 h-screen p-4 text-white'>
@@ -19,7 +19,7 @@ const Sidebar = ({isOpen , toggleSidebar}) => {
             <IoTrendingUpSharp size={24} />
             <div className=''>GT-Portal</div>
           </div>
-          <button onClick={toggleSidebar} className="block lg:hidden text-white" >
+          <button onClick={toggleSidebar} className="block lg:hidden text-white " >
             <MdOutlineCancel size={24} />
           </button>
         </div>

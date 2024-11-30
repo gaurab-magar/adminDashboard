@@ -13,7 +13,7 @@ const Layout = () => {
   }
   return (
     <>
-      <div className="flex flex-row bg-neutral-300 h-screen w-full overflow-x-hidden">
+      <div className="flex flex-row bg-white h-screen w-full overflow-x-hidden">
         <Sidebar className='hidden md:flex' toggleSidebar={toggleSidebar} isOpen={isSidebarOpen} />
           <div className="flex-1 flex flex-col">
             <Header toggleSidebar={toggleSidebar} />

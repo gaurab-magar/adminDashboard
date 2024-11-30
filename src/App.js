@@ -12,6 +12,7 @@ import Support from './Pages/Support';
 import Register from './Auth/Register';
 import LoginPage from './Auth/LoginPage';
 import ProfileForm from './Pages/ProfileForm';
+import ComposeMessage from './Pages/ComposeMessage';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path='/orders' element={<Orders />} />
           <Route path='/settings' element={<Setting />} />
           <Route path='/support' element={<Support />} />
+          <Route path="/compose" element={<ComposeMessage />} />
         </Route>
           <Route path='/login' element={<LoginPage/>} />
           <Route path='/register' element={<Register />} />

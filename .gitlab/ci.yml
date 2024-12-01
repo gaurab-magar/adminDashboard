@@ -1,0 +1,30 @@
+workflow:
+   rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+variables:
+  NODE_VERSION: 21.7.3 
+
+stages:
+  - build
+
+build-job:
+  stage: build
+  before_script:
+    - apt-get -y -qq update
+    - apt-get install -y coreutils
+  script:  
+    - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    - ls
+    - source ~/.nvm/nvm.sh
+    - nvm install $NODE_VERSION
+    - nvm use $NODE_VERSION
+    - nvm alias default $NODE_VERSION
+    - node -v
+    - npm -v
+    - npm install
+    - npm run build 
+   # - npm test   
+   

@@ -12,6 +12,7 @@ const messages = [
   { id: 8, sender: "Michael Wilson", subject: "Team Building Event", timestamp: "1 week ago" },
 ];
 
+
 export default function Messages() {
   return (
     <div className="p-4 md:p-8 border">

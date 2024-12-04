@@ -4,6 +4,8 @@ import InputField from '../components/shared/InputField'
 import Button from '../components/shared/Button'
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import { Link } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({ 
@@ -12,6 +14,9 @@ const LoginPage = () => {
   });
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
+  const passwordRegex = /^(?=.*[!@#$%^&*(),.?":{}|<>]).{5,}$/;
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,6 +34,10 @@ const LoginPage = () => {
       setSuccessMessage('');
       return;
      }
+     if (!passwordRegex.test(formData.password)) {
+      setErrorMessage('Password must be at least 5 characters long and include at least one special character.');
+      return;
+    }
     console.log("Login data:", formData);
 
     setFormData({
@@ -37,11 +46,19 @@ const LoginPage = () => {
     })
 
     setErrorMessage('');
-    setSuccessMessage('your data has been sent succcessfully');
+    toast.success('Registered successfully! Welcome back.', {
+      position: 'top-right',
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
   };
 
   return (
     <FormWrapper title='Welcome Back'>
+      <ToastContainer />
       <form onSubmit={handleSubmit}>
         <InputField type='text' placeholder='Enter Your username' onChange={handleChange} name='username' label='username' Icon={FaUserAlt} value={formData.username} />
         <InputField type='password' placeholder='Enter Your password' onChange={handleChange} name='password' label='password' Icon={FaLock} value={formData.password} />

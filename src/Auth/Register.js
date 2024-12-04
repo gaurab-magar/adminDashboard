@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
 import { Link } from 'react-router-dom';
 import { FaUserAlt, FaEnvelope, FaLock } from 'react-icons/fa';
 import FormWrapper from '../components/shared/FormWrapper';
@@ -34,7 +36,14 @@ const Register = () => {
     }
     console.log('Register data:', formData);
     setErrorMessage('')
-    setSuccessMessage('Registration successfully');
+    toast.success('Registered successfully! Welcome back.', {
+      position: 'top-right',
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
     setFormData({
       fullname: '',
       email: '',
@@ -45,6 +54,7 @@ const Register = () => {
 
   return (
     <FormWrapper title="Create an Account">
+      <ToastContainer />
       <form onSubmit={handleSubmit}>
         <InputField
           type="text"

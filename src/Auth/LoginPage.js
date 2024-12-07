@@ -4,15 +4,15 @@ import InputField from '../components/shared/InputField'
 import Button from '../components/shared/Button'
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import { Link } from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
+import ShowToast from '../components/shared/ShowToast';
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({ 
     username: "",
     password: "" 
   });
-  const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
   const passwordRegex = /^(?=.*[!@#$%^&*(),.?":{}|<>]).{5,}$/;
@@ -31,7 +31,7 @@ const LoginPage = () => {
 
     if (!formData.username || !formData.password) {
       setErrorMessage('All fields are required.');
-      setSuccessMessage('');
+      ShowToast('please fill all fields' , 'error')
       return;
      }
      if (!passwordRegex.test(formData.password)) {
@@ -46,14 +46,7 @@ const LoginPage = () => {
     })
 
     setErrorMessage('');
-    toast.success('Registered successfully! Welcome back.', {
-      position: 'top-right',
-      autoClose: 3000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-    });
+    ShowToast('login succesfully' , 'success')
   };
 
   return (
@@ -72,7 +65,6 @@ const LoginPage = () => {
         <p className="text-center text-gray-500 text-sm mt-4">
           Don't have an account? <Link to='/register' className="text-blue-600 hover:underline">Sign Up</Link>
         </p>
-        {setSuccessMessage && <p className='text-green-400 text-sm font'>{successMessage}</p>}
     </FormWrapper>
   )
 }

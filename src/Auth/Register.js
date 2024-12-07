@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 import { Link } from 'react-router-dom';
 import { FaUserAlt, FaEnvelope, FaLock } from 'react-icons/fa';
 import FormWrapper from '../components/shared/FormWrapper';
 import InputField from '../components/shared/InputField';
 import Button from '../components/shared/Button';
+import ShowToast from '../components/shared/ShowToast';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -16,7 +17,7 @@ const Register = () => {
   });
 
   const [errorMessage , setErrorMessage] = useState('');
-  const [successMessage , setSuccessMessage] = useState('');
+  const passwordRegex = /^(?=.*[!@#$%^&*(),.?":{}|<>]).{5,}$/;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,25 +32,22 @@ const Register = () => {
 
     if (!formData.fullname || !formData.email || !formData.username || !formData.password) {
       setErrorMessage('Please fill all fields');
-      setSuccessMessage('')
+      ShowToast('All fields are required', 'error');
+      return;
+    }
+    if (!passwordRegex.test(formData.password)) {
+      setErrorMessage('Password must be at least 5 characters long and include at least one special character.');
       return;
     }
     console.log('Register data:', formData);
     setErrorMessage('')
-    toast.success('Registered successfully! Welcome back.', {
-      position: 'top-right',
-      autoClose: 3000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-    });
     setFormData({
       fullname: '',
       email: '',
       username: '',
       password: '',
       });
+    ShowToast('registered successfully','success')
   };
 
   return (
@@ -108,7 +106,6 @@ const Register = () => {
           Login
         </Link>
       </p>
-      {setSuccessMessage && <p className='text-green-400 text-sm font'>{successMessage}</p>}
     </FormWrapper>
   );
 };

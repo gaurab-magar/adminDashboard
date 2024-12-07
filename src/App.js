@@ -1,39 +1,15 @@
-import { BrowserRouter as Router ,Routes,Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
-import Layout from './components/shared/Layout';
-import Dashboard from './components/Dashboard';
-import Products from './components/Products';
-import Customers from './Pages/Customers';
-import Message from './Pages/Message';
-import Tranjaction from './Pages/Tranjaction';
-import Orders from './Pages/Orders';
-import Setting from './Pages/Setting';
-import Support from './Pages/Support';
-import Register from './Auth/Register';
-import LoginPage from './Auth/LoginPage';
-import ProfileForm from './Pages/ProfileForm';
-import ComposeMessage from './Pages/ComposeMessage';
+import AppRoutes from './routes/AppRoutes';
+import { AuthProvider } from './Context/AuthContext';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Dashboard/>}></Route>
-          <Route path='/products' element={<Products/>}></Route>
-          <Route path='/customers' element={<Customers />} />
-          <Route path='/profileform' element={<ProfileForm />} />
-          <Route path='/messages' element={<Message />} />
-          <Route path='/transactions' element={<Tranjaction />} />
-          <Route path='/orders' element={<Orders />} />
-          <Route path='/settings' element={<Setting />} />
-          <Route path='/support' element={<Support />} />
-          <Route path="/compose" element={<ComposeMessage />} />
-        </Route>
-          <Route path='/login' element={<LoginPage/>} />
-          <Route path='/register' element={<Register />} />
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <AppRoutes />
+      </Router>
+    </AuthProvider>
   );
 }
 

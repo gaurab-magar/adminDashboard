@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 import { Link } from 'react-router-dom';
@@ -7,48 +7,39 @@ import FormWrapper from '../components/shared/FormWrapper';
 import InputField from '../components/shared/InputField';
 import Button from '../components/shared/Button';
 import ShowToast from '../components/shared/ShowToast';
+import useForms from '../Hooks/useForms';
 
 const Register = () => {
-  const [formData, setFormData] = useState({
+
+  const {formData , handleChange , resetForm} = useForms({
     fullname: '',
     email: '',
     username: '',
     password: '',
-  });
-
-  const [errorMessage , setErrorMessage] = useState('');
+  })
   const passwordRegex = /^(?=.*[!@#$%^&*(),.?":{}|<>]).{5,}$/;
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  const handleSubmit = (e) =>{
+    e.preventDefault()
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+    if (!validateForm()) 
+      return;
+      console.log("Login data:", formData);
+      resetForm();
+      ShowToast('registered succesfully' , 'success')
+  }
 
-    if (!formData.fullname || !formData.email || !formData.username || !formData.password) {
-      setErrorMessage('Please fill all fields');
-      ShowToast('All fields are required', 'error');
-      return;
+  const validateForm = () => {
+    if( !formData.fullname || !formData.email || !formData.username || !formData.password ){
+      ShowToast('please fill all fields' , 'error')
+      return false;
     }
-    if (!passwordRegex.test(formData.password)) {
-      setErrorMessage('Password must be at least 5 characters long and include at least one special character.');
-      return;
+    if( !passwordRegex.test(formData.password) ){
+      ShowToast('password must be at least 5 characters and contain at least one special character','error')
+      return false;
     }
-    console.log('Register data:', formData);
-    setErrorMessage('')
-    setFormData({
-      fullname: '',
-      email: '',
-      username: '',
-      password: '',
-      });
-    ShowToast('registered successfully','success')
-  };
+      return true;
+  }
 
   return (
     <FormWrapper title="Create an Account">
@@ -90,9 +81,6 @@ const Register = () => {
           Icon={FaLock}
           value={formData.password}
         />
-        {errorMessage && (
-          <p className="text-red-500 text-sm mb-4">{errorMessage}</p>
-        )}
         <Button
           type="submit"
           className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white"

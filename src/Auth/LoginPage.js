@@ -22,7 +22,6 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const  isValid = false;
 
     if (!validateForm()) 
     return;

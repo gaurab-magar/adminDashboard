@@ -32,7 +32,7 @@ function AppRoutes() {
         <Route path='/profileform' element={<ProfileForm />} />
         <Route path='/messages' element={<Messages />} />
         <Route path='/orders' element={<Orders />} />
-        <Route path='/transaction' element={<Tranjaction />} />
+        <Route path='/transactions' element={<Tranjaction />} />
         <Route path='/settings' element={<Setting />} />
         <Route path='/support' element={<Support />} />
         <Route path='/compose' element={<ComposeMessage />} />

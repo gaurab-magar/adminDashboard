@@ -11,7 +11,6 @@ const linkClassesActive = 'flex items-center gap-2 px-3 py-2 hover:bg-neutral-70
 const linkClasses = 'flex items-center gap-2 font-light px-3 py-2 hover:bg-neutral-700 hover:no-underline active:bg-neutral-600 rounded-sm text-base text-gray-400 hover:text-gray-300'
 const Sidebar = ({isOpen , toggleSidebar}) => {
   return (
-    // <div className='flex flex-col bg-neutral-900 w-64 h-screen p-4 text-white'>
     <div className={`fixed top-0 left-0 h-screen w-64 bg-neutral-900 text-white p-4 z-50 transition-transform transform 
       ${isOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 lg:static lg:block`}>
         <div className='flex items-center justify-between'>

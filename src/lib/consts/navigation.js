@@ -6,8 +6,10 @@ import {
 	HiOutlineDocumentText,
 	HiOutlineAnnotation,
 	HiOutlineQuestionMarkCircle,
-	HiOutlineCog
+	HiOutlineCog,
 } from 'react-icons/hi'
+import { RiBuilding2Line } from "react-icons/ri";
+
 
 export const DASHBOARD_SIDEBAR_LINKS = [
 	{
@@ -51,6 +53,12 @@ export const DASHBOARD_SIDEBAR_LINKS = [
 		label: 'Messages',
 		path: '/messages',
 		icon: <HiOutlineAnnotation />
+	},
+	{
+		key: 'Company',
+		label: 'company',
+		path: '/company',
+		icon: <RiBuilding2Line />
 	}
 ]
 

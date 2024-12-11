@@ -1,51 +1,62 @@
-import React from 'react'
-import InputField from '../components/shared/InputField'
+import React from 'react';
+import InputField from '../components/shared/InputField';
 import Button from '../components/shared/Button';
 import useForms from '../Hooks/useForms';
 import { PiAddressBookLight } from "react-icons/pi";
 import { IoIosContact } from "react-icons/io";
-import { MdOutlineMail } from "react-icons/md";
-import { MdOutlineDriveFileRenameOutline } from "react-icons/md";
+import { MdOutlineMail, MdOutlineDriveFileRenameOutline, MdNumbers, MdDescription } from "react-icons/md";
 import { CiCalendarDate } from "react-icons/ci";
-import { MdNumbers } from "react-icons/md";
 
 const AddCompany = () => {
-
-  const {formData , handleChange , resetForm} = useForms({
-    address:'',
-    contactNumber:'',
-    email:'',
-    name:'',
+  const { formData, handleChange, resetForm } = useForms({
+    address: '',
+    contactNumber: '',
+    email: '',
+    name: '',
     description: '',
-    estDate:'',
-    regNo:''
+    estDate: '',
+    regNo: ''
   });
 
-  const handleSubmit = (e)=>{
+  const handleSubmit = (e) => {
     e.preventDefault();
-
     console.log(formData);
     resetForm();
-  }
-  return (
-    <div className="bg-white max-w-full mx-auto mt-10 p-6">
-      <h2 className="text-2xl font-bold mb-4 text-blue-600">Add Company</h2>
-      <div className="my-4">
-        <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <InputField type='text' placeholder='address' onChange={handleChange} name='address' label='Address' value={formData.address} Icon={PiAddressBookLight}/>
-              <InputField type='text' placeholder='contactNumber' onChange={handleChange} name='contactNumber' label='contactNumber' value={formData.contactNumber} Icon={IoIosContact}/>
-              <InputField type='text' placeholder='email' onChange={handleChange} name='email' label='email' value={formData.email} Icon={MdOutlineMail}/>
-              <InputField type='text' placeholder='name' onChange={handleChange} name='name' label='name' value={formData.name} Icon={MdOutlineDriveFileRenameOutline}/>
-              <InputField type='text' placeholder='description' onChange={handleChange} name='description' label='description' value={formData.description} Icon={CiCalendarDate}/>
-              <InputField type='text' placeholder='estDate' onChange={handleChange} name='estDate' label='estDate' value={formData.estDate} Icon={CiCalendarDate}/>
-              <InputField type='text' placeholder='regNo' onChange={handleChange} name='regNo' label='regNo' value={formData.regNo} Icon={MdNumbers}/>
-            </div>
-             <Button className='bg-sky-600 text-white flex-end' >submit</Button>
-        </form>
-      </div>
-    </div>
-  )
-}
+  };
 
-export default AddCompany
+  return (
+    <div className="bg-gradient-to-r from-blue-50 to-white shadow-xl max-w-4xl mx-auto mt-10 p-8 rounded-xl">
+      <h2 className="text-3xl font-extrabold mb-6 text-blue-700 tracking-tight">Add Company</h2>
+      <form onSubmit={handleSubmit} className="space-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <InputField type='text' placeholder='Enter Address' onChange={handleChange} name='address' label='Address' value={formData.address} Icon={PiAddressBookLight} />
+          <InputField type='tel' placeholder='Enter Contact Number' onChange={handleChange} name='contactNumber' label='Contact Number' value={formData.contactNumber} Icon={IoIosContact} />
+          <InputField type='email' placeholder='Enter Email' onChange={handleChange} name='email' label='Email' value={formData.email} Icon={MdOutlineMail} />
+          <InputField type='text' placeholder='Enter Company Name' onChange={handleChange} name='name' label='Company Name' value={formData.name} Icon={MdOutlineDriveFileRenameOutline} />
+          <InputField type='date' onChange={handleChange} name='estDate' label='Establishment Date' value={formData.estDate} Icon={CiCalendarDate} />
+          <InputField type='text' placeholder='Enter Registration Number' onChange={handleChange} name='regNo' label='Registration Number' value={formData.regNo} Icon={MdNumbers} />
+        </div>
+        <div>
+          <label className="text-lg font-medium text-gray-700">
+            <span>Description</span>
+          </label>
+          <div className="flex items-start border rounded-lg px-3 py-2 mt-2">
+              <MdDescription className="mr-4 mt-2" />
+              <textarea 
+                name="description" 
+                placeholder="Enter Description" 
+                value={formData.description} 
+                onChange={handleChange} 
+                className="h-32 w-full px-2 py-2 text-gray-700 outline-none border-none sm:text-sm"
+              />
+          </div>
+        </div>
+        <div className="text-right">
+          <Button type='submit' className='bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-all'>Submit</Button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default AddCompany;

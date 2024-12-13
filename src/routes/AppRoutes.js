@@ -15,6 +15,8 @@ import Tranjaction from '../Pages/Tranjaction';
 import PrivateRoute from './PrivateRoute';
 import { useAuth } from '../Context/AuthContext';
 import Dashboard from '../components/Dashboard';
+import Company from '../Pages/Company';
+import AddCompany from '../Pages/AddCompany';
 
 function AppRoutes() {
   const {isLoggedIn} = useAuth();
@@ -36,7 +38,8 @@ function AppRoutes() {
         <Route path='/settings' element={<Setting />} />
         <Route path='/support' element={<Support />} />
         <Route path='/compose' element={<ComposeMessage />} />
-
+        <Route path='/company' element={<Company/>} />
+        <Route path='/addcompany' element={<AddCompany />} />
         {/* Default Route */}
         <Route path='*' element={<Navigate to='/dashboard' />} />
       </Route>

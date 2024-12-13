@@ -1,7 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 import Ttitle from './shared/Ttitle';
-import getOrderStatus from '../lib/consts/Utils/getOrderStatus';
+import Table from './shared/Table';
 
 const RecentDate = [
     {
@@ -77,38 +76,20 @@ const RecentDate = [
       Shipment_address: 'San Francisco, CA 94101',
     },
   ];
-  
+  const columns = [
+    { label: "ID", accessor: "id" },
+    { label: "Product ID", accessor: "product_id" },
+    { label: "Customer Name", accessor: "customer_name" },
+    { label: "Order Total", accessor: "order_total" },
+    { label: "Shipment Address", accessor: "Shipment_address" },
+    { label: "Order Status", accessor: "current_order_status" },
+  ];
 const RecentOrders = () => {
   return (
     <div className='bg-white p-4 rounded-md border-gray-200 border flex-1'>
          <Ttitle>Recent Orders</Ttitle>
-      <div className='mt-3'>
-          <table className='w-full text-gray-700 border-x border-gray-200 rounded-sm'>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Product ID</th>
-                <th>Customer Name</th>
-                <th>Order Date</th>
-                <th>Order Total</th>
-                <th>Shipping Address</th>
-                <th>Order Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {RecentDate.map((item)=>(
-                <tr key={item.customer_id} className='font-extralight'>
-                    <td>#{item.id}</td>
-                    <td className='font-semibold text-blue-500' ><Link to={`/product/${item.product_id}`}>{item.product_id}</Link></td>
-                    <td className='font-semibold text-blue-500' ><Link to={`/customer/${item.customer_name}`} >{item.customer_name}</Link></td>
-                    <td>{item.customer_id}</td>
-                    <td>{item.order_total}</td>
-                    <td>{item.Shipment_address}</td>
-                    <td>{ getOrderStatus (item.current_order_status)}</td>
-                </tr>
-                ))}
-            </tbody>
-          </table>
+      <div className='mt-3 w-full'>
+        <Table columns={columns} data={RecentDate}  />
       </div>
     </div>
   )

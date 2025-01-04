@@ -17,6 +17,7 @@ import { useAuth } from '../Context/AuthContext';
 import Dashboard from '../components/Dashboard';
 import Company from '../Pages/Company';
 import AddCompany from '../Pages/AddCompany';
+import Service from '../Pages/Service';
 
 function AppRoutes() {
   const {isLoggedIn} = useAuth();
@@ -40,6 +41,7 @@ function AppRoutes() {
         <Route path='/compose' element={<ComposeMessage />} />
         <Route path='/company' element={<Company/>} />
         <Route path='/addcompany' element={<AddCompany />} />
+        <Route path='/service' element={<Service />} />
         {/* Default Route */}
         <Route path='*' element={<Navigate to='/dashboard' />} />
       </Route>

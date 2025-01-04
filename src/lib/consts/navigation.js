@@ -9,6 +9,7 @@ import {
 	HiOutlineCog,
 } from 'react-icons/hi'
 import { RiBuilding2Line } from "react-icons/ri";
+import { RiCustomerServiceLine } from "react-icons/ri";
 
 
 export const DASHBOARD_SIDEBAR_LINKS = [
@@ -74,5 +75,11 @@ export const DASHBOARD_SIDEBAR_BOTTOM_LINKS = [
 		label: 'Help & Support',
 		path: '/support',
 		icon: <HiOutlineQuestionMarkCircle />
+	},
+	{
+		key: 'service',
+		label: 'Service',
+		path: '/service',
+		icon: <RiCustomerServiceLine />
 	}
 ]

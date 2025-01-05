@@ -3,7 +3,6 @@ import {
 	HiOutlineCube,
 	HiOutlineShoppingCart,
 	HiOutlineUsers,
-	HiOutlineDocumentText,
 	HiOutlineAnnotation,
 	HiOutlineQuestionMarkCircle,
 	HiOutlineCog,
@@ -44,10 +43,10 @@ export const DASHBOARD_SIDEBAR_LINKS = [
 		icon: <HiOutlineUsers />
 	},
 	{
-		key: 'transactions',
-		label: 'Transactions',
-		path: '/transactions',
-		icon: <HiOutlineDocumentText />
+		key: 'service',
+		label: 'Service',
+		path: '/service',
+		icon: <RiCustomerServiceLine />
 	},
 	{
 		key: 'messages',
@@ -75,11 +74,5 @@ export const DASHBOARD_SIDEBAR_BOTTOM_LINKS = [
 		label: 'Help & Support',
 		path: '/support',
 		icon: <HiOutlineQuestionMarkCircle />
-	},
-	{
-		key: 'service',
-		label: 'Service',
-		path: '/service',
-		icon: <RiCustomerServiceLine />
 	}
 ]

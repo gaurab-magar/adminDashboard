@@ -68,7 +68,7 @@ const Service = () => {
       <header className="bg-blue-600 text-white py-16">
         <div className="container mx-auto text-center px-4">
           <h1 className="text-4xl font-bold">Our Services</h1>
-          <p className="text-lg mt-4">
+          <p className="text-lg mt-4 font-extralight">
             Transforming businesses with innovative and reliable solutions.
           </p>
           <button className="bg-white text-blue-600 px-6 py-2 mt-6 rounded-full shadow-md hover:bg-gray-100">
@@ -154,7 +154,7 @@ const Service = () => {
       <section className="bg-blue-600 text-white py-16">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
-          <p className="text-lg mb-6">
+          <p className="text-lg mb-6 font-extralight">
             Contact us today to discuss your requirements and get a free quote.
           </p>
           <button className="bg-white text-blue-600 px-6 py-2 rounded-full shadow-md hover:bg-gray-100">
